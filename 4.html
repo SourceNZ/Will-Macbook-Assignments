@@ -23,11 +23,12 @@
     <div class="two-col">
         <div class="col1">
         <label for="field1">Which out of these exercises will be most beneficial? Read this then answer</label>
-        <textarea rows="3" cols="60">
+        <textarea onfocus="addContents(this);" rows="3" cols="60">Click to edit
         </textarea>
     </div>
-
+ 
     <div class="col2">
+    <p class= "w3-tiny text-align: right"> Who answered this? </p>
     <input type="radio" name="1" value="Sarah" checked> Sarah<br>
     <input type="radio" name="1" value="Nicole"> Nicole<br>
     <input type="radio" name="1" value="Hannah"> Hannah <br>
@@ -37,10 +38,12 @@
      <div class="two-col">
         <div class="col1">
             <label for="field1">What fitness/muscles are used for that sport? Read this then answer</label>
-            <textarea rows="3" cols="60">
+            <textarea onfocus="addContents(this);" rows="3" cols="60">Click to edit
             </textarea>
         </div>
         <div class="col2">
+        <p class= "w3-tiny text-align: right"> Who answered this? </p>
+
         <input type="radio" name="2" value="Sarah" > Sarah<br>
         <input type="radio" name="2" value="Nicole"> Nicole<br>
         <input type="radio" name="2" value="Hannah" checked> Hannah <br>
@@ -50,11 +53,12 @@
      <div class="two-col">
         <div class="col1">
             <label for="field1">How to  properly to maximize fitness for that sport? Read this then answer</label>
-            <textarea rows="3" cols="60">
+            <textarea onfocus="addContents(this);" rows="3" cols="60">Click to edit
             </textarea>
         </div>
 
         <div class="col2">
+        <p class= "w3-tiny text-align: right"> Who answered this? </p>
         <input type="radio" name="3" value="Sarah" > Sarah<br>
         <input type="radio" name="3" value="Nicole"> Nicole<br>
         <input type="radio" name="3" value="Hannah"> Hannah <br>
@@ -64,11 +68,12 @@
     <div class="two-col">
         <div class="col1">
             <label for="field1">How it will improve their abilities? Read this then answer</label>
-            <textarea rows="3" cols="60">
+            <textarea onfocus="addContents(this)" rows="3" cols="60" >Click to edit
             </textarea>
         </div>
 
         <div class="col2">
+        <p class= "w3-tiny text-align: right"> Who answered this? </p>
         <input type="radio" name="4" value="Sarah" > Sarah<br>
         <input type="radio" name="4" value="Nicole" checked> Nicole<br>
         <input type="radio" name="4" value="Hannah"> Hannah <br>
@@ -91,5 +96,9 @@
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script> function addContents(element) {
+        element.value = 'THIS TEXT-BOX IS NOW FILLED WITH THE USERS ANSWERS, USERS CAN EDIT EACH OTHERS ANSWERS SIMPLY BY CLICKING ON THEIR BOX AND CHANGING THE TEXT';
+    }
+    </script>
   </body>
 </html>
