@@ -14,16 +14,16 @@
 
   </head>
   <body> 
-    <div style="max-width: 900px; border:2px solid #cecece;background-color:#f2f2f2" class="w3-container w3-content">
+    <div style="max-width: 900px; border:2px solid #cecece;background-color:#f2f2f2" class="content">
 
     <h1 style=" text-align:center" > Questions based on the Profile</h1>
 
-    <div style="max-width: 900px;" class="w3-container w3-content w3-padding-32 ">
+    <div style="max-width: 900px;" class="container content padding-32 ">
 
     <div class="two-col">
         <div class="col1">
         <label for="field1">Which out of these exercises will be most beneficial? <a href="4_5.html">Read this then answer</a>  </label>
-        <textarea onfocus="addContents(this);" rows="3" cols="60">Click to edit
+        <textarea name = "1" onfocus="addContents(this);" rows="3" cols="60">Click to edit
         </textarea>
     </div>
  
@@ -38,7 +38,7 @@
      <div class="two-col">
         <div class="col1">
             <label for="field1">What fitness/muscles are used for that sport? <a href="4_5.html">Read this then answer</a></label>
-            <textarea onfocus="addContents(this);" rows="3" cols="60">Click to edit
+            <textarea name = "2" onfocus="addContents(this);" rows="3" cols="60">Click to edit
             </textarea>
         </div>
         <div class="col2">
@@ -53,7 +53,7 @@
      <div class="two-col">
         <div class="col1">
             <label for="field1">How to  properly to maximize fitness for that sport? <a href="4_5.html">Read this then answer</a></label>
-            <textarea onfocus="addContents(this);" rows="3" cols="60">Click to edit
+            <textarea name = "3" onfocus="addContents(this);" rows="3" cols="60">Click to edit
             </textarea>
         </div>
 
@@ -68,7 +68,7 @@
     <div class="two-col">
         <div class="col1">
             <label for="field1">How it will improve their abilities? <a href="4_5.html">Read this then answer</a></label>
-            <textarea onfocus="addContents(this)" rows="3" cols="60" >Click to edit
+            <textarea name = "4" onfocus="addContents(this)" rows="3" cols="60" >Click to edit
             </textarea>
         </div>
 
@@ -97,7 +97,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script> function addContents(element) {
-        element.value = 'THIS TEXT-BOX IS NOW FILLED WITH THE USERS ANSWERS, USERS CAN EDIT EACH OTHERS ANSWERS SIMPLY BY CLICKING ON THEIR BOX AND CHANGING THE TEXT';
+        if(element.name == "1"){
+            element.value = "This text box is now filled with Sarah's answer, users can edit each others answers by simply clicking on their box and changing the text.";
+        }
+        if(element.name == "2"){
+            element.value = "This text box is now filled with Hannah's answer, users can edit each others answers by simply clicking on their box and changing the text.";
+        }
+        if(element.name == "3"){
+            element.value = "This text box is now filled with Anna's answer, users can edit each others answers by simply clicking on their box and changing the text.";
+        }
+        if(element.name == "4"){
+            element.value = "This text box is now filled with Nicole's answer, users can edit each others answers by simply clicking on their box and changing the text.";
+        }
+
     }
     </script>
   </body>
