@@ -43,24 +43,24 @@ img {
     margin-left: auto;
     margin-right: auto
  }
-.two-col {
+.2-col {
     overflow: hidden;
 }
 
-.two-col .col1,
-.two-col .col2 {
-    width 49%;
+.2-col .col1,
+.2-col .col2 {
+    width 50%;
 }
 
-.two-col .col1 {
+.2-col .col1 {
     float: left;
 }
 
-.two-col .col2 {
+.2-col .col2 {
     float: right;
 }
 
-.two-col label {
+.2-col label {
 	font-size: 13px;
     display: block;
 }
