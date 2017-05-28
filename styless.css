@@ -32,7 +32,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .container{padding-right: 40px; padding-left: 15px;}
 .content{max-width:980px;margin:auto}
 
-.tiny{font-size:10px!; font-weight: bold;}
+.tiny{font-size:14px; font-weight: bold;}
 .padding-8{padding-top:8px;padding-bottom:8px}
 .padding-16{padding-top:16px;padding-bottom:16px}
 .padding-32{padding-top:32px;padding-bottom:32px}
@@ -42,26 +42,35 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto
+
  }
-.2-col {
+.two-col {
     overflow: hidden;
+
+}
+.two-col p {
+    margin-top: 0px;
+    margin-bottom: 2px;
+    font-size: 14px;
+    display: block;
+}
+.two-col .col1,
+.two-col .col2 {
+    width 49%;
 }
 
-.2-col .col1,
-.2-col .col2 {
-    width 50%;
-}
-
-.2-col .col1 {
+.two-col .col1 {
     float: left;
 }
 
-.2-col .col2 {
+.two-col .col2 {
     float: right;
+
 }
 
-.2-col label {
-	font-size: 13px;
+.two-col label {
+    font-size: 13px;
+    font-weight: bold;
     display: block;
 }
 
@@ -73,30 +82,30 @@ img {
         margin:10px
     }
     .back {
-    	background-color: #6495ED;
-    	text-align: center;
-    	text-decoration: none;
-    	display: inline-block;
-    	font-weight: bold;
-    	font-size: 15px;
+        background-color: #6495ED;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 15px;
         color: #000000;
 
     }
     .first-btn {
-    	background-color: #6495ED;
-    	padding: 15px 32px;
-    	text-align: center;
-    	text-decoration: none;
-    	display: inline-block;
-    	font-weight: bold;
-    	font-size: 40px;
+        background-color: #6495ED;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 40px;
         color: #000000;
         width: 300px;
         height: 300px;
     }
    
     .easy-btn {
-    	background-color: #0FA000;
+        background-color: #0FA000;
         color: #000000; 
         font-weight: bold;
         font-size: 28px;
@@ -104,17 +113,17 @@ img {
         height: 240px;
     }
     .easy-btn p{
-    	
-    	text-align: center;  
-    	font-size: 18px;
+        
+        text-align: center;  
+        font-size: 18px;
         color: #000000;
 
     }
 
 
     .medium-btn {
-    	background-color: #FF8C00;
-    	font-weight: bold;
+        background-color: #FF8C00;
+        font-weight: bold;
         color: #000000;
         font-size: 28px;
         width: 240px;
@@ -122,37 +131,35 @@ img {
     }
     
    .medium-btn p{
-    	
-    	text-align: center;  
-    	font-size: 18px;
+        
+        text-align: center;  
+        font-size: 18px;
         color: #000000;
 
     }
     .hard-btn {
-    	background-color: #FF0000;
-    	font-weight: bold;
+        background-color: #FF0000;
+        font-weight: bold;
         color: #000000;
         font-size: 28px;
         width: 240px;
         height: 240px;
     }
     .hard-btn p{
-    	
-    	text-align: center;  
-    	font-size: 18px;
+        
+        text-align: center;  
+        font-size: 18px;
         color: #000000;
 
     }
     .button1:hover {
-    	color:#000;
-    	background-color:#7cf374;
+        color:#000;
+        background-color:#7cf374;
 
 }
 #container {
-	border: 12px solid #B22222;
-	border-radius: 10px;
-	margin-top: 15px;
-	margin-bottom: 15px;
+    border: 12px solid #B22222;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-
-

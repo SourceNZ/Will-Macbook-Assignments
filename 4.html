@@ -17,9 +17,9 @@
 
     <h1 style=" text-align:center" > Questions based on the Profile</h1>
 
-    <div style="max-width: 900px;" class="container content padding-32 ">
+    <div style="max-width: 900px;" class="container content padding-16">
 
-    <div class="2-col">
+    <div class="two-col">
         <div class="col1">
         <label for="field1">Which out of these exercises will be most beneficial? <a href="4_5.html">Read this then answer</a>  </label>
         <textarea name = "1" onfocus="addContents(this);" rows="3" cols="60">Click to edit
@@ -27,29 +27,28 @@
     </div>
  
     <div class="col2">
-    <p class= "tiny text-align: right"> Who answered this Question? </p>
+    <p style=  "text-align: right" class = "tiny" > Who answered this Question? </p>
     <input type="radio" name="1" value="Sarah" checked> Sarah<br>
     <input type="radio" name="1" value="Nicole"> Nicole<br>
     <input type="radio" name="1" value="Hannah"> Hannah <br>
     <input type="radio" name="1" value="Anna"> Anna <br>
     </div>
     </div>
-     <div class="2-col">
+     <div class="two-col">
         <div class="col1">
             <label for="field1">What fitness/muscles are used for that sport? <a href="4_5.html">Read this then answer</a></label>
             <textarea name = "2" onfocus="addContents(this);" rows="3" cols="60">Click to edit
             </textarea>
         </div>
         <div class="col2">
-        <p class= "tiny text-align: right"> Who answered this Question? </p>
-
+        <p class= "tiny " style=  "text-align: right"> Who answered this Question? </p>
         <input type="radio" name="2" value="Sarah" > Sarah<br>
         <input type="radio" name="2" value="Nicole"> Nicole<br>
         <input type="radio" name="2" value="Hannah" checked> Hannah <br>
         <input type="radio" name="2" value="Anna"> Anna <br>
+        </div>
     </div>
-    </div>
-     <div class="2-col">
+     <div class="two-col">
         <div class="col1">
             <label for="field1">How to  properly to maximize fitness for that sport? <a href="4_5.html">Read this then answer</a></label>
             <textarea name = "3" onfocus="addContents(this);" rows="3" cols="60">Click to edit
@@ -57,14 +56,14 @@
         </div>
 
         <div class="col2">
-        <p class= "tiny text-align: right"> Who answered this Question? </p>
+        <p class= "tiny" style=  "text-align: right"> Who answered this Question? </p>
         <input type="radio" name="3" value="Sarah" > Sarah<br>
         <input type="radio" name="3" value="Nicole"> Nicole<br>
         <input type="radio" name="3" value="Hannah"> Hannah <br>
         <input type="radio" name="3" value="Anna" checked> Anna <br>
     </div>
     </div>
-    <div class="2-col">
+    <div class="two-col">
         <div class="col1">
             <label for="field1">How it will improve their abilities? <a href="4_5.html">Read this then answer</a></label>
             <textarea name = "4" onfocus="addContents(this)" rows="3" cols="60" >Click to edit
@@ -72,7 +71,7 @@
         </div>
 
         <div class="col2">
-        <p class= "tiny text-align:right"> Who answered this Question? </p>
+        <p class= "tiny" style=  "text-align: right"> Who answered this Question? </p>
         <input type="radio" name="4" value="Sarah" > Sarah<br>
         <input type="radio" name="4" value="Nicole" checked> Nicole<br>
         <input type="radio" name="4" value="Hannah"> Hannah <br>
@@ -82,7 +81,7 @@
     
 
     </div>
-    <div class="2-col">
+    <div class="two-col">
         <div class="col1">
              <button class="button1 back" onclick="location.href='3.html'">Back</button>
                
@@ -108,7 +107,6 @@
         if(element.name == "4"){
             element.value = "This text box is now filled with Nicole's answer, users can edit each others answers by simply clicking on their box and changing the text.";
         }
-
     }
     </script>
   </body>
