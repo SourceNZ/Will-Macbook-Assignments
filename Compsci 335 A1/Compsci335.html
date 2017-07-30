@@ -7,6 +7,7 @@
     <script src="ShowOrders.js"></script>
     <script>
         window.onload = getDestinations();
+        window.onload = showTabHome;
         //window.onload = getId();
     </script>
 
@@ -17,32 +18,45 @@
 </header>
 
 <body>
+
     <ul>
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Menu</a>
             <div class="dropdown-content">
-                <a href="#">Home</a>
-                <a href="#">Blu-Ray</a>
-                <a href="#">Books</a>
-                <a href="#">Register</a>
-                <a href="#">Guest Book</a>
+                <a id="TabHome" href="#" onclick="showTabHome();">Home</a>
+                <a id="TabBlu" href="#" onclick="showTabBlu();">Blu-Ray</a>
+                <a id="TabBooks" href="#" onclick="showTabBooks();">Books</a>
+                <a id="TabRegister" href="#" onclick="showTabRegister();">Register</a>
+                <a id="TabGuest" href="#" onclick="showTabGuest();">Guest Book</a>
             </div>
         </li>
     </ul>
 
 
-    <div class="home">
+    <div id="SectionHome">
+        <h2> HOME SECTION VISIBLE </h2>
         <h2> Home </h2>
         <p> This is the home page of La Boutique Cass&#233e, an online book and blu-ray store. Feel free to browse our products
             or create an account and purchase one of them. You can also leave a comment in the guest book if you wish.
         </p>
-    </div>
-    <div class="books">
-        <table id="showTab"></table>
 
     </div>
-    <p id="show_result">here</p>
+    <div id="SectionBlu">
+        <h2> BLU SECTION VISIBLE </h2>
+    </div>
+    <div id="SectionRegister">
+        <h2> REGISTER SECTION VISIBLE </h2>
+    </div>
 
+    <div id="SectionBooks">
+        <h2> BOOK SECTION VISIBLE </h2>
+        <table id="showTable" style="width: 50%;"></table>
+    </div>
+
+    <div id="SectionGuest">
+        <h2>GUEST SECTION VISIBLE </h2>
+        <p id="show_result">HERERERERERERER</p>
+    </div>
 </body>
 
 </html>
