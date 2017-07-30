@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="ShowOrders.js"></script>
     <script>
-        window.onload = getDestinations();
+        window.onload = getBookList();
+        window.onload = getBluList();
         window.onload = showTabHome;
         //window.onload = getId();
     </script>
@@ -43,6 +44,8 @@
     </div>
     <div id="SectionBlu">
         <h2> BLU SECTION VISIBLE </h2>
+        <table id="BluListTable" style="width: 50%;"></table>
+        
     </div>
     <div id="SectionRegister">
         <h2> REGISTER SECTION VISIBLE </h2>
@@ -50,7 +53,7 @@
 
     <div id="SectionBooks">
         <h2> BOOK SECTION VISIBLE </h2>
-        <table id="showTable" style="width: 50%;"></table>
+        <table id="BookListTable" style="width: 50%;"></table>
     </div>
 
     <div id="SectionGuest">
