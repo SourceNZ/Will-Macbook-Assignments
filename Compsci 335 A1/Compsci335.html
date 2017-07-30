@@ -1,0 +1,48 @@
+<!DOCTYPEhtml>
+<html>
+
+<head>
+    <title>La Boutique Cass&#233e</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="ShowOrders.js"></script>
+    <script>
+        window.onload = getDestinations();
+        //window.onload = getId();
+    </script>
+
+
+</head>
+<header>
+    <h1>La Boutique Cass&#233e</h1>
+</header>
+
+<body>
+    <ul>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Menu</a>
+            <div class="dropdown-content">
+                <a href="#">Home</a>
+                <a href="#">Blu-Ray</a>
+                <a href="#">Books</a>
+                <a href="#">Register</a>
+                <a href="#">Guest Book</a>
+            </div>
+        </li>
+    </ul>
+
+
+    <div class="home">
+        <h2> Home </h2>
+        <p> This is the home page of La Boutique Cass&#233e, an online book and blu-ray store. Feel free to browse our products
+            or create an account and purchase one of them. You can also leave a comment in the guest book if you wish.
+        </p>
+    </div>
+    <div class="books">
+        <table id="showTab"></table>
+
+    </div>
+    <p id="show_result">here</p>
+
+</body>
+
+</html>
