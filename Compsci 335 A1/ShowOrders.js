@@ -1,29 +1,37 @@
-function getDestinations() {
-    //var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
+function getBookList() {
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onload = function () {
         var resp = JSON.parse(xhr.responseText);
-        showDestinations(resp);
+        showBookList(resp);
     }
     xhr.send(null);
 }
-function getId() {
+function getBluList() {
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brlist";
     var xhr = new XMLHttpRequest();
-    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
     xhr.open("GET", uri, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onload = function () {
-        var version_d = document.getElementById("show_result");
-        //alert(xhr.responseText);
-        version_d.innerHTML = xhr.responseText;
+        var resp = JSON.parse(xhr.responseText);
+        showBluList(resp);
     }
     xhr.send(null);
 }
-
-function showDestinations(dest) {
+function getBluImg(id) {
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id={" + id + "}";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", uri, true);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onload = function () {
+        var resp = JSON.parse(xhr.responseText);
+        return id;
+    }
+    xhr.send(null);
+}
+function showBluList(dest) {
     var tableContent = "<tr class='orderTitle'><td>BookID</td><td>Book Title</td></tr>\n";
     for (var i = 0; i < dest.length; ++i) {
         var record = dest[i];
@@ -33,9 +41,53 @@ function showDestinations(dest) {
         else { // even row
             tableContent += "<tr class='orderEven'>";
         }
-        tableContent += "<td>" + record.Id + "</td><td>" + record.Title + "</td></tr>\n";
+        tableContent += "<td>" + "<img src= http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + " height=150 width=100>" + "</td><td>" + record.Title + "</td></tr>\n";
     }
-    document.getElementById("showTable").innerHTML = tableContent;
+    document.getElementById("BluListTable").innerHTML = tableContent;
+}
+function getId() {
+    var xhr = new XMLHttpRequest();
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
+    xhr.open("GET", uri, true);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onload = function () {
+        var version_d = document.getElementById("show_result");
+        version_d.innerHTML = xhr.responseText;
+    }
+    xhr.send(null);
+}
+
+function showBookList(dest) {
+    var tableContent = "<tr class='orderTitle'><td>Blu-Ray</td><td>Blu-Ray Title</td></tr>\n";
+    for (var i = 0; i < dest.length; ++i) {
+        var record = dest[i];
+        if (i & 1 == 1) { // odd row
+            tableContent += "<tr class='orderOdd'>";
+        }
+        else { // even row
+            tableContent += "<tr class='orderEven'>";
+        }
+        //Try using the Id from the booklist.
+        // var id1 = function getBluImg(find) {
+        //     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id={" + record.Id + "}";
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open("GET", uri, true);
+        //     xhr.setRequestHeader("Accept", "application/json");
+        //     xhr.onload = function () {
+        //         var resp = JSON.parse(xhr.responseText);
+        //         return resp;
+                
+        //     }
+        //     xhr.send(null);
+
+        // }
+        //http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=cb001
+        //alert("http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id);
+        //alert("http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id={" + record.Id +"}" );
+        tableContent += "<td>" + "<img src= http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + " height=150 width=100>" + "</td><td>" + record.Title + "</td></tr>\n";
+
+    }
+    document.getElementById("BookListTable").innerHTML = tableContent;
 }
 
 var currentTab = "";
@@ -87,11 +139,11 @@ function showNoTabs() {
     document.getElementById("SectionBooks").style.display = "none";
     document.getElementById("SectionRegister").style.display = "none";
     document.getElementById("SectionGuest").style.display = "none";
-    
-    
+
+
 }
 window.onload = function () {
-            showTabHome();
+    showTabHome();
 }
 
 
