@@ -9,7 +9,9 @@
         window.onload = getBookList();
         window.onload = getBluList();
         window.onload = showTabHome;
-        //window.onload = getId();
+        window.onload = getComments;
+       
+        
     </script>
 
 
@@ -34,18 +36,20 @@
     </ul>
 
 
-    <div id="SectionHome">
+    <div class="home" id="SectionHome">
         <h2> HOME SECTION VISIBLE </h2>
         <h2> Home </h2>
         <p> This is the home page of La Boutique Cass&#233e, an online book and blu-ray store. Feel free to browse our products
-            or create an account and purchase one of them. You can also leave a comment in the guest book if you wish.
+            or create an account and purchase one of them. You can also leave a comment in the guest book if you wish. ADDING
+            MORE TEXT HERE TO TEST THE ALIGNMENT.
         </p>
 
     </div>
     <div id="SectionBlu">
         <h2> BLU SECTION VISIBLE </h2>
+        <input type="search" id="BluSearch" onkeyup="searchBlu()" placeholder="Search for a Blu-Ray by Title...">
         <table id="BluListTable" style="width: 50%;"></table>
-        
+
     </div>
     <div id="SectionRegister">
         <h2> REGISTER SECTION VISIBLE </h2>
@@ -53,13 +57,32 @@
 
     <div id="SectionBooks">
         <h2> BOOK SECTION VISIBLE </h2>
+        <input type="search" id="BookSearch" onkeyup="searchBooks()" placeholder="Search for a Book by Title...">
         <table id="BookListTable" style="width: 50%;"></table>
     </div>
 
-    <div id="SectionGuest">
+    <div class="guest" id="SectionGuest">
         <h2>GUEST SECTION VISIBLE </h2>
-        <p id="show_result">HERERERERERERER</p>
+        <form id = "comment">
+            Enter your name:<br>
+            <input type="text" id = "name">
+
+            <br><br>
+            Enter your comment<br>
+            <textarea id = "comment" rows="4" cols="50"></textarea>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <p id="show_result">HERERERERERERERE</p>
     </div>
 </body>
 
 </html>
+https://www.cs.auckland.ac.nz/courses/compsci335s2c/lectures/mano/a11/marking.html The following list includes some of the
+functionalities we will be looking for when marking this assignment. We may add more items to this list, but these will not
+be outside the scope of the assignment specification. Showing the correct logo Having the three logical sections: shop front,
+user registrations, and comments (plus any other relevant section such as an "About") Successful user registration Showing
+the success status when the registration is successful and showing failure when not Submitting comments Viewing the current
+set of comments Seeing the list of Blurays Seeing the cover arts of Blurays Searching through the list of Blurays Seeing
+the list of books Seeing the cover arts of books Searching through the list of books Logging in and buying a book Logging
+in and buying a Blueray The look and feel of the site Browser compatibility

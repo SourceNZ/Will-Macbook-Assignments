@@ -2,10 +2,18 @@
             padding-left: 150px;
             padding-right: 150px;
         }
-        .home.p {
-            align: justify;
-            
+        #SectionHome {
+            padding-left: 150px;
+            padding-right: 150px;
+
         }
+        .guest {
+             align-content: center;
+        }
+        #SectionGuest {
+            align-content: center;
+        }
+
 
         h1 {
             font-family: "Bookman Old Style";

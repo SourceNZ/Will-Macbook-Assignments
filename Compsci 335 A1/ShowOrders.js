@@ -20,19 +20,9 @@ function getBluList() {
     }
     xhr.send(null);
 }
-function getBluImg(id) {
-    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id={" + id + "}";
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", uri, true);
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.onload = function () {
-        var resp = JSON.parse(xhr.responseText);
-        return id;
-    }
-    xhr.send(null);
-}
+
 function showBluList(dest) {
-    var tableContent = "<tr class='orderTitle'><td>BookID</td><td>Book Title</td></tr>\n";
+    var tableContent = "<tr class='orderTitle'><td>Blu-Ray Cover</td><td>Blu-Ray Title</td></tr>\n";
     for (var i = 0; i < dest.length; ++i) {
         var record = dest[i];
         if (i & 1 == 1) { // odd row
@@ -45,20 +35,21 @@ function showBluList(dest) {
     }
     document.getElementById("BluListTable").innerHTML = tableContent;
 }
-function getId() {
+function getComments() {
     var xhr = new XMLHttpRequest();
-    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
+    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments";
     xhr.open("GET", uri, true);
     xhr.setRequestHeader("Accept", "application/json");
     xhr.onload = function () {
         var version_d = document.getElementById("show_result");
         version_d.innerHTML = xhr.responseText;
+
     }
     xhr.send(null);
 }
 
 function showBookList(dest) {
-    var tableContent = "<tr class='orderTitle'><td>Blu-Ray</td><td>Blu-Ray Title</td></tr>\n";
+    var tableContent = "<tr class='orderTitle'><td>Book Cover</td><td>Book Title</td></tr>\n";
     for (var i = 0; i < dest.length; ++i) {
         var record = dest[i];
         if (i & 1 == 1) { // odd row
@@ -67,28 +58,43 @@ function showBookList(dest) {
         else { // even row
             tableContent += "<tr class='orderEven'>";
         }
-        //Try using the Id from the booklist.
-        // var id1 = function getBluImg(find) {
-        //     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id={" + record.Id + "}";
-        //     var xhr = new XMLHttpRequest();
-        //     xhr.open("GET", uri, true);
-        //     xhr.setRequestHeader("Accept", "application/json");
-        //     xhr.onload = function () {
-        //         var resp = JSON.parse(xhr.responseText);
-        //         return resp;
-                
-        //     }
-        //     xhr.send(null);
-
-        // }
-        //http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=cb001
-        //alert("http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id);
-        //alert("http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id={" + record.Id +"}" );
         tableContent += "<td>" + "<img src= http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + " height=150 width=100>" + "</td><td>" + record.Title + "</td></tr>\n";
 
     }
     document.getElementById("BookListTable").innerHTML = tableContent;
 }
+
+function searchBlu() {
+    var filter = document.getElementById("BluSearch").value.toUpperCase();
+    var table = document.getElementById("BluListTable");
+    var tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+function searchBooks() {
+    var filter = document.getElementById("BookSearch").value.toUpperCase();
+    var table = document.getElementById("BookListTable");
+    var tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
 
 var currentTab = "";
 function showTabHome() {
@@ -142,8 +148,6 @@ function showNoTabs() {
 
 
 }
-window.onload = function () {
-    showTabHome();
-}
+
 
 
