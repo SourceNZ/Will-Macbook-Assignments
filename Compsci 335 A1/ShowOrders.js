@@ -94,6 +94,32 @@ function searchBooks() {
         }
     }
 }
+function postComment() {
+    var name = document.forms["comment"]["name"].value;
+    var comment = document.forms["comment"]["comment"].value;
+    if (name == "" || comment == "") {
+        alert("Fields must be filled out");
+    }
+    else {
+        var xhr = new XMLHttpRequest();
+        var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/comment?name=" + name;
+        xhr.open("POST", uri, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.setRequestHeader("Content-Length", ""+ comment.length);
+        xhr.send(JSON.stringify(comment));
+        document.forms["comment"].reset();
+    }
+   
+    // Host: redsox.uoa.auckland.ac.nz
+    // Content-Length: 7
+    // Content-Type: application/json
+
+    // "Hello"
+}
+//        <form id="comment" onsubmit="postComment()">
+//             <input type="text" id="name">
+//             <textarea id="comment" rows="4" cols="50"></textarea>
+//             <input type="submit" value="Submit">
 
 
 var currentTab = "";
@@ -102,7 +128,6 @@ function showTabHome() {
         currentTab = "TabHome";
         showNoTabs();
         document.getElementById("SectionHome").style.display = "inline";
-
     }
 
 
@@ -148,6 +173,10 @@ function showNoTabs() {
 
 
 }
+window.onload = function () {
+    showTabHome();
+}
+
 
 
 

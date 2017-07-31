@@ -8,10 +8,10 @@
     <script>
         window.onload = getBookList();
         window.onload = getBluList();
-        window.onload = showTabHome;
-        window.onload = getComments;
-       
-        
+        window.onload = getComments();
+        window.onload = function () {
+            showTabHome();
+        }
     </script>
 
 
@@ -34,7 +34,6 @@
             </div>
         </li>
     </ul>
-
 
     <div class="home" id="SectionHome">
         <h2> HOME SECTION VISIBLE </h2>
@@ -63,16 +62,15 @@
 
     <div class="guest" id="SectionGuest">
         <h2>GUEST SECTION VISIBLE </h2>
-        <form id = "comment">
+        <form id="comment" onsubmit="postComment()" method="post" action="">
             Enter your name:<br>
-            <input type="text" id = "name">
-
+            <input type="text" id="name">
+            <br><br> Enter your comment<br>
+            <textarea id="comment" rows="4" cols="50"></textarea>
             <br><br>
-            Enter your comment<br>
-            <textarea id = "comment" rows="4" cols="50"></textarea>
-            <br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" onsubmit="postComment()">
         </form>
+        
         <p id="show_result">HERERERERERERERE</p>
     </div>
 </body>
