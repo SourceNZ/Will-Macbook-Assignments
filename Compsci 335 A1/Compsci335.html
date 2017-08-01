@@ -17,11 +17,22 @@
 
 </head>
 <header>
-    <h1>La Boutique Cass&#233e</h1>
+    <div class="img">
+        <div id:"left">
+            <h1>La Boutique Cass&#233e</h1>
+            <div class = "logging">
+            <p id="showID">Not Logged In</p> 
+            <button id="logout" onclick="logout()">(LOGOUT)</button>
+            <div>
+        <div>
+        <div id: "right">
+            <img src= "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/logo" height=150 width=100 >
+        </div>
+    </div>
 </header>
 
 <body>
-
+<div class= "nav">
     <ul>
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Menu</a>
@@ -34,7 +45,7 @@
             </div>
         </li>
     </ul>
-
+</div>
     <div class="home" id="SectionHome">
         <h2> HOME SECTION VISIBLE </h2>
         <h2> Home </h2>
@@ -45,24 +56,50 @@
 
     </div>
     <div id="SectionBlu">
-        <h2> BLU SECTION VISIBLE </h2>
+        <h2> Blu-Ray Catalogue </h2>
+        <h3> Search for a Blu-ray: </h3>
         <input type="search" id="BluSearch" onkeyup="searchBlu()" placeholder="Search for a Blu-Ray by Title...">
         <table id="BluListTable" style="width: 50%;"></table>
 
     </div>
+    <div id="SectionLogin">
+        <form id="login" onsubmit="login()" action="">
+            Username:<br> 
+            <input type="text" id="logname"> 
+            <br><br>
+            Password:<br>
+            <input type="text" id="logpassword">
+            <br><br>
+            <input type="submit" value="Submit" onsubmit="login()">
+        </form>   
+        
+    </div>
+
     <div id="SectionRegister">
-        <h2> REGISTER SECTION VISIBLE </h2>
+        <h2> Register Here To Purchase Goods</h2>
+        <form id="register" onsubmit="register()" action="">
+            Username:<br> 
+            <input type="text" id="regname"> 
+            <br><br>Password:<br>
+            <input type="text" id="regpassword">
+            <br><br>Address:<br>
+            <input type="text" id="regaddress">
+            <br><br>
+            <input type="submit" value="Submit" onsubmit="register()">
+        </form>   
     </div>
 
     <div id="SectionBooks">
-        <h2> BOOK SECTION VISIBLE </h2>
+        <h2> Book Catalogue </h2>
+        <h3> Search for a Book: </h3>
         <input type="search" id="BookSearch" onkeyup="searchBooks()" placeholder="Search for a Book by Title...">
         <table id="BookListTable" style="width: 50%;"></table>
     </div>
 
     <div class="guest" id="SectionGuest">
-        <h2>GUEST SECTION VISIBLE </h2>
-        <form id="comment" onsubmit="postComment()" method="post" action="">
+        <h2>Guest Book</h2>
+        <h3> Feel free to leave a comment </h3>
+        <form id="comment" onsubmit="postComment()" action="">
             Enter your name:<br>
             <input type="text" id="name">
             <br><br> Enter your comment<br>
@@ -70,8 +107,8 @@
             <br><br>
             <input type="submit" value="Submit" onsubmit="postComment()">
         </form>
-        
-        <p id="show_result">HERERERERERERERE</p>
+        <h3> Recent Comments </h3>
+        <p id="show_result">Comments Will appear here</p>
     </div>
 </body>
 
