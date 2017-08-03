@@ -1,6 +1,8 @@
 var Globaluser = "";
 var Globalpassword = "";
 var loggedin = false;
+var bookSelected = "";
+var bluSelected = "";
 function getBookList() {
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/booklist";
     var xhr = new XMLHttpRequest();
@@ -12,6 +14,7 @@ function getBookList() {
     }
     xhr.send(null);
 }
+
 function getBluList() {
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brlist";
     var xhr = new XMLHttpRequest();
@@ -34,7 +37,7 @@ function showBluList(dest) {
         else { // even row
             tableContent += "<tr class='orderEven'>";
         }
-        tableContent += "<td>" + "<img src= http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + " height=150 width=100>" + "</td><td>" + record.Title + "</td><td><button id=" + record.Id + " onclick='showTabLogin()'> BUY </button></td></tr>\n";
+        tableContent += "<td>" + "<img src= http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/brimg?id=" + record.Id + " height=150 width=100>" + "</td><td>" + record.Title + "</td><td><button id=" + record.Id + " onclick='buyBlu(this.id)'> BUY </button></td></tr>\n";
     }
     document.getElementById("BluListTable").innerHTML = tableContent;
 }
@@ -43,10 +46,11 @@ function getComments() {
     var uri = "http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/htmlcomments";
     xhr.open("GET", uri, true);
     xhr.setRequestHeader("Accept", "application/json");
+    var version_d = document.getElementById("show_result");
+    version_d.innerHTML = xhr.responseText;
     xhr.onload = function () {
         var version_d = document.getElementById("show_result");
         version_d.innerHTML = xhr.responseText;
-
     }
     xhr.send(null);
 }
@@ -60,7 +64,7 @@ function showBookList(dest) {
         else { // even row
             tableContent += "<tr class='orderEven'>";
         }
-        tableContent += "<td>" + "<img src= http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + " height=150 width=100>" + "</td><td>" + record.Title + "</td><td><button id=" + record.Id + " onclick='showTabLogin()'> BUY </button></td></tr>\n";
+        tableContent += "<td>" + "<img src= http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/bookimg?id=" + record.Id + " height=150 width=100>" + "</td><td>" + record.Title + "</td><td><button id=" + record.Id + " onclick='buyBook(this.id)'> BUY </button></td></tr>\n";
 
     }
     document.getElementById("BookListTable").innerHTML = tableContent;
@@ -110,9 +114,10 @@ function postComment() {
         xhr.setRequestHeader("Content-Length", "" + comment.length);
         xhr.send(JSON.stringify(comment));
         document.forms["comment"].reset();
+        getComments();
     }
     document.getElementById("show_result").style.display = "none";
-
+    getComments();
     document.getElementById("show_result").style.display = "inline";
 }
 
@@ -138,76 +143,74 @@ function register() {
         alert(xhr.responseText);
         document.forms["register"].reset();
         document.getElementById("showID").value = Globaluser;
+        document.getElementById("showID").innerHTML = Globaluser;
+        alert("Registered Successfully! You have been logged in");
+        loggedin = true;
     }
-    document.getElementById("showID").innerHTML = Globaluser;
-    loggedin = true;
-    // http://redsox.uoa.auckland.ac.nz/BC/Open/Service.svc/register
+
 }
 
 function login() {
+    e =  bluSelected;
+    alert(e + "this is after show tab login is called");
     Globaluser = document.forms["login"]["logname"].value;
     Globalpassword = document.forms["login"]["logpassword"].value;
     if (Globaluser == "" || Globalpassword == "") {
         alert("Both fields must be filled out");
     }
-    var xhr = new XMLHttpRequest();
-    var uri = "http://redsox.uoa.auckland.ac.nz/BC/Closed/Service.svc/bookbuy?id=cb001";
-    xhr.open("POST", uri, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    var user = {
-        "Name": Globaluser,
-        "Password": Globalpassword
+    else {
+        var xhr = new XMLHttpRequest();
+        var uri = "http://redsox.uoa.auckland.ac.nz/BC/Closed2/Service.svc/brbuy?id=" + e;
+        xhr.open("GET", uri, false);
+        xhr.setRequestHeader("Authorization", "Basic " + btoa(Globaluser + ":" + Globalpassword));
+        xhr.send("");
+        alert(xhr.status);
     }
-    xhr.setRequestHeader("Content-Length", "" + user.length);
-    xhr.send(JSON.stringify(user));
-    alert("LOGGING IN");
-    alert(xhr.responseText);
-    document.getElementById("showID").innerHTML = Globaluser;
-    
-    loggedin = true;
+    if (xhr.status == 200) {
+        alert("Server code: " + xhr.status + ", User Authenticated");
+        document.getElementById("showID").innerHTML = Globaluser;
+        loggedin = true;
+        alert("LOGGED IN AS: " + Globaluser);
+        alert(xhr.responseText);
+        document.forms["login"].reset();
+    } else {
+        alert("Incorrect username and/or password.");
+    }
+    showTabHome();
 
 }
 
 
 function buyBlu(e) {
-    if (loggedin) {
-        var name = Globaluser;
-        var password = Globalpassword;
+    if (loggedin == true) {
         var xhr = new XMLHttpRequest();
-        var uri = "http://redsox.uoa.auckland.ac.nz/BC/Closed/Service.svc/brbuy?id=" + e;
-        xhr.open("POST", uri, true);
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        var user = {
-            "Name": name,
-            "Password": password
-        }
-        xhr.setRequestHeader("Content-Length", "" + user.length);
-        xhr.send(JSON.stringify(user));
+        var uri = "http://redsox.uoa.auckland.ac.nz/BC/Closed2/Service.svc/brbuy?id=" + e;
+        xhr.open("GET", uri, false);
+        xhr.setRequestHeader("Authorization", "Basic " + btoa(Globaluser + ":" + Globalpassword));
+        xhr.send("");
         alert(xhr.responseText);
     }
-    else {
+    else if (loggedin == false) {
         showTabLogin();
+        bluSelected = e;
+        showBluList();
+        
     }
 
 }
 function buyBook(e) {
-    if (loggedin) {
-        var name = Globaluser;
-        var password = Globalpassword;
+    if (loggedin == true) {
         var xhr = new XMLHttpRequest();
-        var uri = "http://redsox.uoa.auckland.ac.nz/BC/Closed/Service.svc/bookbuy?id=" + e;
-        xhr.open("POST", uri, true);
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        var user = {
-            "Name": name,
-            "Password": password
-        }
-        xhr.setRequestHeader("Content-Length", "" + user.length);
-        xhr.send(JSON.stringify(user));
+        var uri = "http://redsox.uoa.auckland.ac.nz/BC/Closed2/Service.svc/bookbuy?id=" + e;
+        xhr.open("GET", uri, false);
+        xhr.setRequestHeader("Authorization", "Basic " + btoa(Globaluser + ":" + Globalpassword));
+        xhr.send("");
         alert(xhr.responseText);
     }
-    else {
+    else if (loggedin == false) {
         showTabLogin();
+        bookSelected = e;
+        showBookList();
     }
 
 }
@@ -216,6 +219,7 @@ function logout() {
     loggedin = false;
     Globaluser = "";
     Globalpassword = "";
+    alert("Logged Out Successfully");
 
     document.getElementById("showID").innerHTML = "Not Logged In";
 
@@ -282,8 +286,26 @@ function showNoTabs() {
 }
 window.onload = function () {
     showTabHome();
+    getBookList();
+    getBluList();
+    getComments();
+
 }
 
 
 
+
+
+
+    // xhr.setRequestHeader("Content-Length", "" + Globaluser.length + Globalpassword.length);
+    // xhr.open("POST", uri, true, Globaluser, Globalpassword);
+    // xhr.setRequestHeader("Authorization", "Basic " + btoa(Globaluser+":"+Globalpassword));
+    // xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    // var user = {
+    //     "Name": Globaluser,
+    //     "Password": Globalpassword
+    // }
+    // xhr.send();
+    // alert(xhr.status);
+    // alert(JSON.parse(xhr.response));
 
